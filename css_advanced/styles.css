@@ -1,0 +1,701 @@
+/* ---------- Base ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root{
+  --bg-dark: #071629;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,.75);
+  --accent: #C271FF;                 /* purple from mock */
+  --hero-img: url("file:///Users/dafrosambanga/Desktop/alx_sefe/alx_html_css/css_advanced/CSS-Advanced-5/Object.png"); 
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg-dark);
+  line-height: 1.4;
+}
+
+/* ---------- Header / Nav ---------- */
+header{
+  position:absolute;                /* sits over the hero image */
+  inset:0 0 auto 0;
+  z-index:50;
+}
+header nav{
+  max-width:1200px;
+  margin:0 auto;
+  padding:28px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+header nav img{
+  height: clamp(24px, 2.4vw, 36px);
+  width:auto;
+  display:block;
+  object-fit:contain;
+  filter: brightness(0) invert(1);  /* white logo */
+  -webkit-user-drag: none;
+  user-select: none;
+}
+header nav ul{
+  list-style:none;
+  display:flex;
+  gap:40px;
+}
+header nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  letter-spacing:.04em;
+  font-size:.875rem;
+  opacity:.9;
+  transition: color .2s ease, opacity .2s ease;
+}
+header nav a:hover{ color:var(--accent); opacity:1; }
+
+/* ---------- Hero (first section) ---------- */
+main > section:first-of-type{
+  position:relative;
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;         /* pros row near bottom */
+  overflow:hidden;
+
+  /* Full-bleed image + vignettes like the design */
+  background:
+    radial-gradient(1200px 70% at 65% 8%, rgba(7,22,41,0) 0%, rgba(7,22,41,.55) 55%, rgba(7,22,41,.85) 85%, rgba(7,22,41,.95) 100%),
+    linear-gradient(180deg, rgba(7,22,41,.15) 0%, rgba(7,22,41,.85) 62%, rgba(7,22,41,1) 100%),
+    var(--hero-img) center right/cover no-repeat;
+}
+
+/* --- Headline block (first div inside first section) --- */
+main > section:first-of-type > div:first-of-type{
+  margin-top:120px;                 /* space below header */
+  margin-inline:auto;
+  max-width:960px;
+  padding:0 24px;
+  text-align:center;
+}
+
+main > section:first-of-type h1{
+  font-size: clamp(40px, 6.5vw, 96px);
+  line-height:1.02;
+  font-weight:800;
+  letter-spacing:-.02em;
+  text-shadow: 0 10px 30px rgba(0,0,0,.35);
+  margin-bottom:16px;
+}
+
+/* SMILES • GRIN • LAUGH */
+main > section:first-of-type > div:first-of-type span{
+  display:inline-block;
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:.25em;
+  color:var(--muted);
+  margin:0 8px 26px;
+}
+main > section:first-of-type > div:first-of-type span:not(:last-of-type)::after{
+  content:" • ";
+  margin-left:12px;
+  opacity:.7;
+}
+
+/* CTA */
+main > section:first-of-type button{
+  margin-top:6px;
+  border:0;
+  border-radius:999px;
+  padding:14px 28px;
+  font-weight:700;
+  letter-spacing:.04em;
+  color:#fff;
+  background:linear-gradient(180deg, #D29BFF 0%, var(--accent) 100%);
+  box-shadow:0 12px 32px rgba(194,113,255,.38), inset 0 1px 0 rgba(255,255,255,.35);
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+}
+main > section:first-of-type button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 16px 40px rgba(194,113,255,.45);
+}
+main > section:first-of-type button:active{
+  transform:translateY(0);
+  filter:saturate(1.08);
+}
+
+/* --- “Learn from the pros” (second div inside first section) --- */
+main > section:first-of-type > div:nth-of-type(2){
+  margin:72px auto 64px;
+  width:100%;
+  max-width:1100px;
+  padding:0 24px 24px;
+  text-align:center;
+}
+main > section:first-of-type > div:nth-of-type(2) > h2{
+  font-size:clamp(20px, 2.6vw, 28px);
+  font-weight:700;
+  margin-bottom:36px;
+  color:#fff;
+}
+/* To color only the word “Learn”, wrap it:
+   <h2><span class="highlight">Learn</span> from the pros</h2> */
+main > section:first-of-type > div:nth-of-type(2) > h2 .highlight{ color:var(--accent); }
+
+/* Pros row */
+main > section:first-of-type > div:nth-of-type(2) > div{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:28px;
+}
+main > section:first-of-type > div:nth-of-type(2) > div > div{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+main > section:first-of-type > div:nth-of-type(2) img{
+  width:110px;
+  height:110px;
+  object-fit:cover;
+  border-radius:999px;
+  border:4px solid rgba(255,255,255,.12);
+  box-shadow:0 10px 20px rgba(0,0,0,.35), 0 0 0 6px rgba(194,113,255,.15);
+  margin-bottom:14px;
+}
+main > section:first-of-type > div:nth-of-type(2) h3{
+  font-size:1rem;
+  font-weight:700;
+  margin-bottom:6px;
+}
+main > section:first-of-type > div:nth-of-type(2) p{
+  font-size:.85rem;
+  color:var(--muted);
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width:900px){
+  header nav ul{ gap:24px; }
+  main > section:first-of-type > div:nth-of-type(2) > div{
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    row-gap:36px;
+  }
+}
+@media (max-width:560px){
+  header nav{ padding:22px 16px; }
+  header nav ul{ gap:18px; }
+  header nav a{ font-size:.8rem; }
+  main > section:first-of-type h1{ font-size: clamp(36px, 10vw, 64px); }
+  main > section:first-of-type > div:nth-of-type(2){ margin:56px auto 40px; }
+  main > section:first-of-type > div:nth-of-type(2) > div{ grid-template-columns:1fr; }
+}
+/* ===== Quote / Testimonial Section (2nd section) ===== */
+:root{
+    /* keep if already defined elsewhere */
+    --accent:#C271FF;
+    --text:#ffffff;
+    --muted:rgba(255,255,255,.85);
+  }
+  
+  main > section:nth-of-type(2){
+    background: var(--accent);
+    color: var(--text);
+    padding: 64px 24px;
+    display: grid;
+    grid-template-columns: 120px 1fr;   /* avatar | text */
+    gap: 24px 32px;
+    align-items: center;
+  }
+  
+  /* Avatar */
+  main > section:nth-of-type(2) > div:first-of-type img{
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 999px;
+    border: 4px solid rgba(255,255,255,.22);
+    box-shadow: 0 10px 18px rgba(0,0,0,.25);
+    display:block;
+    /* nudges photo closer to the text column */
+    margin-left: auto;
+  }
+  
+  /* Text box */
+  main > section:nth-of-type(2) > div:nth-of-type(2){
+    max-width: 760px;               /* keeps lines comfortable on large screens */
+  }
+  
+  /* The quote text */
+  main > section:nth-of-type(2) blockquote{
+    margin: 0 0 12px;
+    font-size: clamp(16px, 2.1vw, 18px);
+    line-height: 1.7;
+    color: var(--text);
+  }
+  
+  /* Name */
+  main > section:nth-of-type(2) h3{
+    margin: 0 0 2px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  
+  /* Role */
+  main > section:nth-of-type(2) p{
+    margin: 0;
+    font-size: .95rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+  
+  /* ------- Responsive ------- */
+  @media (max-width: 640px){
+    main > section:nth-of-type(2){
+      grid-template-columns: 1fr;   /* stack */
+      text-align: center;
+    }
+    main > section:nth-of-type(2) > div:first-of-type img{
+      margin: 0 auto 12px;
+    }
+    main > section:nth-of-type(2) > div:nth-of-type(2){
+      margin-inline: auto;
+    }
+  }
+  /* ===================== Popular Tutorials (videos list) ===================== */
+  :root{
+    --accent:#C271FF;          /* purple */
+    --ink:#2b2f3a;             /* body text on white */
+    --muted:#6b7280;           /* gray text */
+    --thumb-h:180px;           /* thumbnail height */
+  }
+  
+  /* Section wrapper */
+  main > section:nth-of-type(3){
+    position:relative;
+    background:#fff;
+    color:var(--ink);
+    padding:72px 24px 96px;
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap:28px;
+  }
+  
+  /* Top and bottom purple bars */
+  main > section:nth-of-type(3)::before,
+  main > section:nth-of-type(3)::after{
+    content:"";
+    position:absolute; left:0; right:0; height:14px; background:var(--accent);
+  }
+  main > section:nth-of-type(3)::before{ top:0; } 
+  main > section:nth-of-type(3)::after{ bottom:0; }
+  
+  /* Section heading */
+  main > section:nth-of-type(3) > h2{
+    grid-column:1 / -1;
+    text-align:center;
+    font-weight:700;
+    font-size:clamp(22px, 3vw, 32px);
+    margin-bottom:8px;
+    color:#333;
+  }
+  /* Color only the word “popular” if wrapped in a span.accent */
+  main > section:nth-of-type(3) > h2 .accent{ color:var(--accent); }
+  
+  /* ===================== Card ===================== */
+  main > section:nth-of-type(3) > div{
+    position:relative;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 10px 24px rgba(0,0,0,.08);
+    transition:transform .15s ease, box-shadow .2s ease;
+    display:grid;
+    grid-template-columns:1fr 1fr;   /* lets bottom row align duration right */
+    grid-auto-rows:auto;
+    cursor:pointer;
+  }
+  main > section:nth-of-type(3) > div:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 36px rgba(0,0,0,.12);
+  }
+  
+  /* Thumbnail */
+  main > section:nth-of-type(3) > div > img:first-of-type{
+    grid-column:1 / -1;
+    width:100%;
+    height:var(--thumb-h);
+    object-fit:cover;
+    display:block;
+  }
+  
+  /* ===================== Player button (CSS-only) ===================== */
+  /* White circle with purple play triangle, centered over thumbnail. */
+  main > section:nth-of-type(3) > div::after{
+    content:"";
+    position:absolute;
+    top:calc(var(--thumb-h)/2 - 28px);
+    left:50%;
+    transform:translateX(-50%);
+    width:56px; height:56px;
+    background:#ffffff;
+    border-radius:50%;
+    box-shadow:0 10px 26px rgba(0,0,0,.25);
+    pointer-events:none;             /* does not block clicks */
+  }
+  main > section:nth-of-type(3) > div::before{
+    content:"";
+    position:absolute;
+    top:calc(var(--thumb-h)/2 - 10px);
+    left:calc(50% - 6px);
+    border-left:14px solid var(--accent);
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    z-index:1;
+    pointer-events:none;
+  }
+  /* Hover/focus “play” feedback */
+  main > section:nth-of-type(3) > div:hover::after,
+  main > section:nth-of-type(3) > div:focus-within::after{
+    transform:translateX(-50%) scale(1.06);
+    box-shadow:0 16px 40px rgba(0,0,0,.28), 0 0 0 8px rgba(194,113,255,.18);
+  }
+  
+  /* Title & description */
+  main > section:nth-of-type(3) h3{
+    grid-column:1 / -1;
+    margin:16px 16px 6px;
+    font-size:1rem;
+    font-weight:700;
+    color:#1f2937;
+  }
+  main > section:nth-of-type(3) > div > p:first-of-type{
+    grid-column:1 / -1;
+    margin:0 16px 12px;
+    font-size:.95rem;
+    color:var(--muted);
+  }
+  
+  /* Author row (avatar + name) */
+  main > section:nth-of-type(3) > div > div:nth-of-type(1){
+    grid-column:1 / -1;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 16px 12px;
+  }
+  main > section:nth-of-type(3) > div > div:nth-of-type(1) img{
+    width:28px; height:28px; border-radius:50%; object-fit:cover;
+  }
+  main > section:nth-of-type(3) > div > div:nth-of-type(1) h4{
+    font-size:.95rem;
+    font-weight:600;
+    color:var(--accent);
+  }
+  
+  /* Stars (left) */
+  main > section:nth-of-type(3) > div > div:nth-of-type(2){
+    margin:0 16px 16px;
+    justify-self:start;
+    align-self:center;
+  }
+  main > section:nth-of-type(3) i.fa-star{
+    font-size:.8rem;
+    color:var(--accent);
+    margin-right:4px;
+  }
+  
+  /* Duration (right) */
+  main > section:nth-of-type(3) > div > p:last-of-type{
+    margin:0 16px 16px;
+    justify-self:end;
+    align-self:center;
+    font-weight:700;
+    font-size:.9rem;
+    color:#8e8e8e;
+  }
+  
+  /* ===================== Responsive ===================== */
+  @media (max-width:1100px){
+    main > section:nth-of-type(3){
+      grid-template-columns:repeat(2, minmax(0,1fr));
+    }
+  }
+  @media (max-width:640px){
+    :root{ --thumb-h:160px; }
+    main > section:nth-of-type(3){
+      grid-template-columns:1fr;
+      padding:56px 16px 72px;
+    }
+    main > section:nth-of-type(3) > div::after{ top:calc(var(--thumb-h)/2 - 24px); width:48px; height:48px; }
+    main > section:nth-of-type(3) > div::before{ top:calc(var(--thumb-h)/2 - 9px); }
+  }
+ /* =============== Free membership (4th section) =============== */
+:root{
+  --bg-dark:#071629;
+  --text:#ffffff;
+  --muted:rgba(255,255,255,.75);
+  --accent:#C271FF;
+}
+
+main > section:nth-of-type(4){
+  background: var(--bg-dark);
+  color: var(--text);
+  padding: 72px 24px 96px;
+  text-align: center;
+
+  /* grid: h2 on full row, then 4 items, then CTA button */
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 40px 32px;
+  align-items: start;
+}
+
+/* Heading */
+main > section:nth-of-type(4) > h2{
+  grid-column: 1 / -1;
+  font-weight: 800;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+/* (Optional) wrap the word Free: <h2><span class="accent">Free</span> membership</h2> */
+main > section:nth-of-type(4) > h2 .accent{ color: var(--accent); }
+
+/* Each perk */
+main > section:nth-of-type(4) > div{
+  display: grid;
+  place-items: center;
+  row-gap: 10px;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+/* Icon — tint to purple and size like the mock */
+main > section:nth-of-type(4) > div > img{
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+  /* convert monochrome svg/png to our accent purple */
+  filter: brightness(0) saturate(100%)
+          invert(76%) sepia(43%) saturate(7493%)
+          hue-rotate(232deg) brightness(99%) contrast(91%);
+  margin-bottom: 6px;
+}
+
+/* Perk title + copy */
+main > section:nth-of-type(4) > div > h3{
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+main > section:nth-of-type(4) > div > p{
+  font-size: .95rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* CTA button */
+main > section:nth-of-type(4) > button{
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin-top: 12px;
+
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: #fff;
+  background: linear-gradient(180deg, #D29BFF 0%, var(--accent) 100%);
+  box-shadow: 0 12px 32px rgba(194,113,255,.35), inset 0 1px 0 rgba(255,255,255,.35);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+}
+main > section:nth-of-type(4) > button:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(194,113,255,.45);
+}
+main > section:nth-of-type(4) > button:active{
+  transform: translateY(0);
+  filter: saturate(1.06);
+}
+
+/* --------- Responsive --------- */
+@media (max-width: 1024px){
+  main > section:nth-of-type(4){
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    row-gap: 32px;
+  }
+}
+@media (max-width: 560px){
+  main > section:nth-of-type(4){
+    grid-template-columns: 1fr;
+    padding: 56px 16px 72px;
+  }
+}
+/* ===================== FAQ Section ===================== */
+:root{
+  --bg-dark:#071629;
+  --ink:#1f2732;
+  --muted:#8b94a3;
+}
+
+main > section:nth-of-type(5){
+  position: relative;
+  background:#ffffff;
+  color:var(--ink);
+  padding: 90px 24px 110px;
+}
+
+/* Thin dark bars (top & bottom) */
+main > section:nth-of-type(5)::before,
+main > section:nth-of-type(5)::after{
+  content:"";
+  position:absolute; left:0; right:0; height:14px;
+  background:var(--bg-dark);
+}
+main > section:nth-of-type(5)::before{ top:0; }
+main > section:nth-of-type(5)::after{ bottom:0; }
+
+/* Title */
+main > section:nth-of-type(5) > h2{
+  text-align:center;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 600;
+  letter-spacing: .18em;        /* F.A.Q. tracking like the design */
+  color: #2a3140;
+  margin: 0 0 56px;
+}
+
+/* Outer container that holds the two columns */
+main > section:nth-of-type(5) > div{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 56px 80px;               /* row gap | column gap */
+}
+
+/* Each column wrapper (already 2 divs in your HTML) */
+main > section:nth-of-type(5) > div > div{
+  display: grid;
+  grid-auto-rows: min-content;
+  row-gap: 28px;                /* space between Q and A blocks */
+}
+
+/* Question blocks – in your HTML, questions are the odd children
+   of each column wrapper */
+main > section:nth-of-type(5) > div > div > div:nth-child(odd) h3{
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;             /* bold question */
+  color: #2b3240;
+}
+
+/* Answer blocks – even children following each question */
+main > section:nth-of-type(5) > div > div > div:nth-child(even){
+  font-size: .98rem;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 480px;             /* keeps comfortable line length */
+}
+
+/* Extra vertical spacing between each Q&A pair */
+main > section:nth-of-type(5) > div > div > div:nth-child(2n){
+  margin-bottom: 24px;
+}
+
+/* ----------------- Responsive ----------------- */
+@media (max-width: 900px){
+  main > section:nth-of-type(5) > div{
+    grid-template-columns: 1fr; /* stack columns */
+    gap: 40px;
+  }
+  main > section:nth-of-type(5){
+    padding: 72px 18px 84px;
+  }
+}
+/* ============ Footer Section ============ */
+footer{
+  /* footer-only variables */
+  --footer-bg: #071629;
+  --footer-text: #ffffff;
+  --footer-muted: rgba(255,255,255,.55);
+  --footer-accent: #C271FF;
+
+  background: var(--footer-bg);
+  color: var(--footer-text);
+}
+
+footer > section{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 44px 24px 60px;
+}
+
+/* top row: logo left, socials right */
+footer > section > div:first-of-type{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* logo inside footer only */
+footer img[alt="logo"]{
+  height: 32px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* white on dark bg */
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* socials container */
+footer > section > div:first-of-type > div{
+  display: flex;
+  gap: 18px;
+}
+
+/* brand icons (footer only) */
+footer i.fa-brands{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  color: var(--footer-bg);
+  font-size: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,.22);
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+}
+footer i.fa-brands:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.28);
+  background: var(--footer-accent);
+  color: #fff;
+}
+
+/* copyright (footer only) */
+footer > section > p{
+  margin: 28px 0 0;
+  text-align: center;
+  font-size: .9rem;
+  color: var(--footer-muted);
+}
+
+/* responsive (footer only) */
+@media (max-width: 640px){
+  footer > section{
+    padding: 36px 16px 48px;
+  }
+}
