@@ -1,0 +1,181 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./assets/fonts/SourceSansPro-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./assets/fonts/SourceSansPro-Bold.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+:root{
+    --first-color : #FF6565;
+    --dark: #071629;
+    --light: #FFFFFF;
+}
+
+body{
+    text-align: center;
+    justify-content: center;
+    color: var(--light);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+header{
+    background-image: url("./assets/images/headphones_hero_1.jpg");
+    background-size: cover;
+    height: 600px;
+  text-align: center; 
+  padding: 2rem;
+}
+
+#hero-section {
+  display: flex;                  /* enable flexbox */
+  justify-content: space-between; /* push logo left, nav right */
+  align-items: center;            /* vertically center them */
+  padding: 20px 50px;             /* optional spacing */
+}
+
+#hero-section img {
+  height: 50px;                   /* control logo size */
+}
+
+#hero-section nav ul {
+  display: flex;                  /* make nav items horizontal */
+  list-style: none;               /* remove bullets */
+  gap: 30px;                      /* space between each item */
+  margin: 0;
+  padding: 0;
+}
+
+#hero-section nav ul li {
+  text-transform: capitalize;     /* optional: make text nice */
+  cursor: pointer;                /* make it look clickable */
+}
+
+#hero-section nav ul li:hover {
+  color: #FF6565;                 /* example hover effect */
+}
+
+button{
+    border-radius: 10px;
+    color: var(--light);
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+}
+button:hover{
+    opacity: 0.9;
+}
+
+.hero-content {
+  position: relative;
+  top: 50%;                  /* push it 50% down the page */
+  transform: translateY(-50%);
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 0px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hero-content p:nth-of-type(2) {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.6;
+  padding-top: 30px;
+}
+.hero-content p:first-of-type{
+    margin-top: 0px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  #hero-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    padding: 10px;
+    display: none; /* hide by default */
+  }
+
+  .menu-toggle {
+    display: block; /* show the hamburger */
+  }
+
+  nav.active ul {
+    display: flex; /* show the menu when active */
+  }
+}
+
+/* ----- WHAT WE DO SECTION ----- */
+#what-we-do {
+  text-align: center;
+  padding: 80px 40px;
+  background-color: #fff;
+  color: #333;
+}
+
+#what-we-do .intro-text {
+  max-width: 700px;
+  margin: 0 auto 60px auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #000;
+  background-color: var(--light);
+}
+
+/* The features grid */
+.features {
+  display: flex;
+  justify-content: space-between; /* spreads them evenly */
+  align-items: flex-start;
+  flex-wrap: nowrap; /* keep them on one line */
+  gap: 20px; /* small space between them */
+  max-width: 1000px; /* prevent stretching too wide */
+  margin: 0 auto; /* center the entire row */
+}
+
+.feature-item {
+  flex: 1; /* each item takes equal width */
+  text-align: center;
+}
+
+.feature-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.feature-item p {
+  font-size: 0.95rem;
+  color: #000;
+}
