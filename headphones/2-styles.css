@@ -253,5 +253,12 @@ button:hover{
   top: 65%;
   font-size: 0.8rem;
 }
-
-
+@media screen and (max-width: 768px) and (min-width: 481px) {
+  .features,
+  .features2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    justify-items: center;
+  }
+}

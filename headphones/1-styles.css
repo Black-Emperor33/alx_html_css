@@ -179,3 +179,12 @@ button:hover{
   font-size: 0.95rem;
   color: #000;
 }
+@media screen and (max-width: 768px) and (min-width: 481px) {
+  .features,
+  .features2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    justify-items: center;
+  }
+}
