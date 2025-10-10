@@ -1,0 +1,446 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./assets/fonts/SourceSansPro-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./assets/fonts/SourceSansPro-Bold.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+:root{
+    --first-color : #FF6565;
+    --dark: #071629;
+    --light: #FFFFFF;
+}
+
+body{
+    text-align: center;
+    justify-content: center;
+    color: var(--light);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+header{
+    background-image: url("./assets/images/headphones_hero_1.jpg");
+    background-size: cover;
+    height: 600px;
+  text-align: center; 
+  padding: 2rem;
+}
+
+#hero-section {
+  display: flex;                  /* enable flexbox */
+  justify-content: space-between; /* push logo left, nav right */
+  align-items: center;            /* vertically center them */
+  padding: 20px 50px;             /* optional spacing */
+}
+
+#hero-section img {
+  height: 50px;                   /* control logo size */
+}
+
+#hero-section nav ul {
+  display: flex;                  /* make nav items horizontal */
+  list-style: none;               /* remove bullets */
+  gap: 30px;                      /* space between each item */
+  margin: 0;
+  padding: 0;
+}
+
+#hero-section nav ul li {
+  text-transform: capitalize;     /* optional: make text nice */
+  cursor: pointer;                /* make it look clickable */
+}
+
+#hero-section nav ul li:hover {
+  color: #FF6565;                 /* example hover effect */
+}
+
+button{
+    border-radius: 10px;
+    color: var(--light);
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+}
+button:hover{
+    opacity: 0.9;
+}
+
+.hero-content {
+  position: relative;
+  top: 50%;                  /* push it 50% down the page */
+  transform: translateY(-50%);
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 0px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hero-content p:nth-of-type(2) {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.6;
+  padding-top: 30px;
+}
+.hero-content p:first-of-type{
+    margin-top: 0px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  /* Make header stack neatly */
+  #hero-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+  }
+
+  /* Hamburger on LEFT, logo on RIGHT */
+  .menu-toggle {
+    display: block;
+    order: 1; /* first in row */
+  }
+
+  #hero-section img {
+    order: 2; /* second */
+    height: 40px;
+  }
+
+  /* Make the nav drop down under header */
+  nav {
+    width: 100%;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    background-color: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    padding: 15px 0;
+    display: none; /* hidden by default */
+    text-align: center;
+  }
+
+  nav ul li {
+    padding: 10px 0;
+  }
+
+  nav.active ul {
+    display: flex; /* show when active */
+  }
+
+  /* HERO CONTENT */
+  .hero-content {
+    padding: 40px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  /* WHAT WE DO */
+  #what-we-do {
+    padding: 40px 20px;
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .feature-item {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* OUR RESULT */
+#our-result {
+    background-size: contain;
+    padding-top: 80px;   /* adds vertical space so it doesn’t overlap */
+    margin-top: 60px;    /* pushes it further down from "what we do" */
+  }
+
+  /* Keep stacking vertically*/ 
+  .features2 {
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+  }
+
+  .features2 > div {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .features2 img {
+    width: 80px;
+  }
+
+
+  /* CONTACT FORM */
+  #contact-us {
+    padding: 40px 20px;
+  }
+
+  #contact-form {
+    width: 100%;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 30px 20px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+  }
+
+
+/* ----- WHAT WE DO SECTION ----- */
+#what-we-do {
+  text-align: center;
+  padding: 80px 40px;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+#what-we-do .intro-text {
+  max-width: 700px;
+  margin: 0 auto 60px auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--dark);
+  background-color: var(--light);
+}
+
+/* The features grid */
+.features {
+  display: flex;
+  justify-content: space-between; /* spreads them evenly */
+  align-items: flex-start;
+  flex-wrap: nowrap; /* keep them on one line */
+  gap: 20px; /* small space between them */
+  max-width: 1000px; /* prevent stretching too wide */
+  margin: 0 auto; /* center the entire row */
+}
+
+.feature-item {
+  flex: 1; /* each item takes equal width */
+  text-align: center;
+}
+
+.feature-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.feature-item p {
+  font-size: 0.95rem;
+  color: #000;
+}
+
+/* ----- OUR RESULT SECTION ----- */
+#our-result {
+  text-align: center;
+  padding: 80px 40px;
+  background-image: url("./assets/images/headphones_hero_2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 80vh; /* fill screen height */
+  color: var(--light);
+  position: relative; /* allows us to position the features independently */
+}
+
+/* Intro paragraph stays near the top */
+#our-result > p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: #f0f0f0;
+  font-size: 1rem;
+}
+
+/* FEATURES ROW (move lower, add space) */
+.features2 {
+  display: flex;
+  justify-content: space-between; /* adds space between items */
+  align-items: center;
+  gap: 50px; /* extra breathing room */
+  max-width: 1000px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 20%; /* pushes pentagons lower */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* EACH FEATURE BOX */
+.features2 div {
+  position: relative;
+  flex: 1;
+  text-align: center;
+}
+
+/* PENTAGON IMAGE */
+.features2 img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+/* TEXT ON TOP OF IMAGE */
+.features2 p {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  text-align: center;
+}
+
+/* FIRST P (+2%) */
+.features2 div p:first-of-type {
+  top: 25%;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* SECOND P (Lorem ipsum...) */
+.features2 div p:last-of-type {
+  top: 65%;
+  font-size: 0.8rem;
+}
+
+/* ----- CONTACT SECTION ----- */
+#contact-us {
+  padding: 60px 40px;
+  text-align: center;
+  background-color: var(--light);
+}
+
+#contact-us h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: var(--dark);
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#contact-form label {
+  align-self: flex-start;
+  font-weight: 300;
+  /*margin-bottom: 5px;*/
+  color: var(--dark);
+}
+
+#contact-form input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--dark);
+  background: transparent;
+  font-size: 1rem;
+  padding: 8px 0;
+  outline: none;
+}
+
+#contact-form input:focus {
+  border-bottom-color: var(--dark);
+}
+
+/* ----- FOOTER SECTION ----- */
+footer {
+  background-color: var(--dark);
+  color: var(--light);
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* top row: logo (left) + icons (right) */
+footer .footer-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* logo styling */
+footer img:first-child {
+  height: 50px;
+}
+
+/* social icons container */
+footer .social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+footer .social-icons img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+
+/* copyright text */
+footer p {
+  font-size: 0.9rem;
+  color: var(--light);
+  margin-top: 10px;
+}
+}
